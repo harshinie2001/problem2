@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask App</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .links {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .links a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .links a:hover {
+            color: #0056b3;
+        }
+        .message {
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 4px;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .info {
+            background-color: #cce5ff;
+            color: #004085;
+            border: 1px solid #b8daff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+                <h1>Welcome to the Home Page</h1>
+                <p>This is the home page of the web application.</p>
+                <p class="links"><a href="{{ url_for('login') }}">Login</a> | <a href="{{ url_for('register') }}">Register</a></p>
+                <h1>Login</h1>
+                <form action="{{ url_for('login') }}" method="POST">
+                    <label for="email_phone">Email/Phone:</label>
+                    <input type="text" id="email_phone" name="email_phone" required><br>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required><br>
+                    <input type="submit" value="Login">
+                </form>
+                <div class="links">
+                    <a href="{{ url_for('forgot_password') }}">Forgot password?</a>
+                </div>
+                <h1>Register</h1>
+                <form action="{{ url_for('register') }}" method="POST">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required><br>
+                    <label for="phone">Phone:</label>
+                    <input type="text" id="phone" name="phone" required><br>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required><br>
+                    <label for="confirm_password">Confirm Password:</label>
+                    <input type="password" id="confirm_password" name="confirm_password" required><br>
+                    <input type="submit" value="Register">
+                </form>
+                <h1>Forgot Password</h1>
+                <form action="{{ url_for('forgot_password') }}" method="POST">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required><br>
+                    <input type="submit" value="Send OTP">
+                </form>
+                <h1>Verify OTP</h1>
+                <form action="{{ url_for('verify_otp') }}" method="POST">
+                    <label for="otp">Enter OTP:</label>
+                    <input type="text" id="otp" name="otp" required><br>
+                    <input type="submit" value="Verify OTP">
+                </form>
+                <h1>Reset Password</h1>
+                <form action="{{ url_for('reset_password') }}" method="POST">
+                    <label for="new_password">New Password:</label>
+                    <input type="password" id="new_password" name="new_password" required><br>
+                    <label for="confirm_password">Confirm Password:</label>
+                    <input type="password" id="confirm_password" name="confirm_password" required><br>
+                    <input type="submit" value="Reset Password">
+                </form>
+                <h1>Dashboard</h1>
+                <!-- Add dashboard content here -->
+    </div>
+</body>
+</html>
